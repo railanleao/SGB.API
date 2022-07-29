@@ -1,0 +1,12 @@
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\bin\Debug\net6.0\Sgb.Domain.deps.json
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\bin\Debug\net6.0\Sgb.Domain.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\bin\Debug\net6.0\Sgb.Domain.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.csproj.AssemblyReference.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.AssemblyInfoInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.AssemblyInfo.cs
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.csproj.CoreCompileInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\refint\Sgb.Domain.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\Sgb.Domain.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Domain\obj\Debug\net6.0\ref\Sgb.Domain.dll

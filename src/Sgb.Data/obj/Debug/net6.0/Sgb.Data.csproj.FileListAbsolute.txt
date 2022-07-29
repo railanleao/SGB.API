@@ -1,0 +1,17 @@
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.csproj.AssemblyReference.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.AssemblyInfoInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.AssemblyInfo.cs
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.csproj.CoreCompileInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Data.deps.json
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Data.runtimeconfig.json
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Data.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Data.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Domain.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\bin\Debug\net6.0\Sgb.Domain.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.csproj.CopyComplete
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\refint\Sgb.Data.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\Sgb.Data.genruntimeconfig.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Data\obj\Debug\net6.0\ref\Sgb.Data.dll

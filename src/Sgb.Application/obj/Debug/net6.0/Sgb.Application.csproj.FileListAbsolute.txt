@@ -1,0 +1,15 @@
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\bin\Debug\net6.0\Sgb.Application.deps.json
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\bin\Debug\net6.0\Sgb.Application.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\bin\Debug\net6.0\Sgb.Application.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.csproj.AssemblyReference.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.AssemblyInfoInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.AssemblyInfo.cs
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.csproj.CoreCompileInputs.cache
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\refint\Sgb.Application.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\ref\Sgb.Application.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\bin\Debug\net6.0\Sgb.Domain.dll
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\bin\Debug\net6.0\Sgb.Domain.pdb
+C:\Users\rleao\Projetos\SGB\src\Sgb.Application\obj\Debug\net6.0\Sgb.Application.csproj.CopyComplete
