@@ -10,3 +10,4 @@ namespace Sgb.Application.Service
         Task<UsuarioLoginResponse> LoginSemSenha(string usuarioId);
     }
 }
+ 

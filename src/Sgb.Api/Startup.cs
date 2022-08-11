@@ -13,7 +13,7 @@ public class Startup : Interfaces.IStartup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCors();
-        services.AddControllers();
+        services.AddControllers();//.AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new IntToStringConverter()))
         services.AddRouting(options => options.LowercaseUrls = true);
         services.AddVersioning();
         services.AddSwagger();
@@ -27,7 +27,7 @@ public class Startup : Interfaces.IStartup
         {
             app.UseDeveloperExceptionPage();
         }
-
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         app.UseSwaggerUI();
         app.UseHttpsRedirection();
         app.UseAuthentication();

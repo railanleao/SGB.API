@@ -16,15 +16,17 @@ namespace Sgb.Api.IoC
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
             
-            services.AddEntityFrameworkNpgsql().AddDbContextPool<ContextBvs>(opt => opt.UseNpgsql
-        (configuration.GetConnectionString("BVS")));
-            services.AddEntityFrameworkNpgsql().AddDbContextPool<IdentityDataContext>(opt => opt.UseNpgsql
-            (configuration.GetConnectionString("BVS")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<ContextBvs>(opt => opt.UseNpgsql
+                (configuration.GetConnectionString("SGB")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<IdentityDataContext>(opt => opt.UseNpgsql
+                (configuration.GetConnectionString("SGB")));
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<IIdentityService, IdentityService>();
 
             services.AddScoped<IServiceComprador, ServiceComprador>();
             services.AddScoped<IRepositoryComprador, RepositoryComprador>();
@@ -36,9 +38,7 @@ namespace Sgb.Api.IoC
             services.AddScoped<IRepositoryInicioParceria, RepositoryInicioParceria>();
 
             services.AddScoped<IServiceAlteracaoSaida, ServiceAlteracaoSaida>();
-            services.AddScoped<IRepositoryAlteracaoSaida, RepositoryAlteracaoSaida>();
-
-            services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<IRepositoryAlteracaoSaida, RepositoryAlteracaoSaida>();            
         }
     }
 }

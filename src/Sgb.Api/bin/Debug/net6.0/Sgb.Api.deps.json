@@ -11,6 +11,7 @@
           "Microsoft.AspNetCore.Mvc.Versioning": "5.0.0",
           "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "5.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.7",
+          "Sgb.Application": "1.0.0",
           "Sgb.Data": "1.0.0",
           "Sgb.Domain": "1.0.0",
           "Sgb.Identity": "1.0.0",

@@ -10,8 +10,8 @@ namespace Sgb.Data.EntityMap.CompradorAssociado
         {
             builder.ToTable("Compradores");
             builder.HasKey(c => c.CadastroId);
-            builder.Property(c => c.Nome).HasMaxLength(150).IsRequired();
-            builder.Property(c => c.CPF).HasColumnType("int").IsRequired();
+            builder.Property(c => c.Nome).HasColumnType("varchar").HasMaxLength(150).IsUnicode(false).IsRequired();
+            builder.Property(c => c.CPF).HasColumnType("varchar").IsRequired();
 
             //https://docs.microsoft.com/pt-br/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-simple-key%2Csimple-key
             builder.Navigation(c => c.Associados).AutoInclude();

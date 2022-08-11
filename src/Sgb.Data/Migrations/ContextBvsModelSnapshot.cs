@@ -28,29 +28,34 @@ namespace Sgb.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("CPF")
-                        .HasMaxLength(14)
-                        .HasColumnType("integer");
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
+
+                    b.Property<Guid>("CompradorId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("DataDaParceria")
-                        .HasColumnType("timestamp with time zone");
+                        .IsUnicode(false)
+                        .HasColumnType("date");
 
                     b.Property<string>("Fazenda")
                         .IsRequired()
                         .HasMaxLength(180)
-                        .HasColumnType("character varying(180)");
-
-                    b.Property<Guid>("IdComprador")
-                        .HasColumnType("uuid");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.HasKey("CadastroId");
 
-                    b.HasIndex("IdComprador");
+                    b.HasIndex("CompradorId");
 
                     b.ToTable("Associados", (string)null);
                 });
@@ -61,13 +66,17 @@ namespace Sgb.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("CPF")
-                        .HasColumnType("int");
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.HasKey("CadastroId");
 
@@ -81,7 +90,10 @@ namespace Sgb.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("Arroba")
-                        .HasColumnType("numeric(7,2)");
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<Guid>("AssociadoId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Classificacao")
                         .HasColumnType("text");
@@ -89,32 +101,32 @@ namespace Sgb.Data.Migrations
                     b.Property<string>("CompraVenda")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("IdAssociado")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("IdComprador")
+                    b.Property<Guid>("CompradorId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("InicioParceriaId")
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("PesoBruto")
-                        .HasColumnType("numeric(7,2)");
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<decimal?>("PesoMedioAlterado")
                         .HasColumnType("numeric(18,2)");
 
+                    b.Property<int>("QtdadeSaida")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("RendimentoCarcaca")
-                        .HasColumnType("numeric(7,2)");
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<DateTime>("Saida")
                         .HasColumnType("date");
 
                     b.HasKey("BoiId");
 
-                    b.HasIndex("IdAssociado");
+                    b.HasIndex("AssociadoId");
 
-                    b.HasIndex("IdComprador");
+                    b.HasIndex("CompradorId");
 
                     b.HasIndex("InicioParceriaId");
 
@@ -128,7 +140,11 @@ namespace Sgb.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("Arroba")
-                        .HasColumnType("numeric(7,2)");
+                        .IsUnicode(false)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<Guid>("AssociadoId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Classificacao")
                         .IsRequired()
@@ -138,42 +154,41 @@ namespace Sgb.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("CompradorId")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("DataInicioParceria")
                         .HasColumnType("date");
-
-                    b.Property<Guid>("IdAssociado")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("IdComprador")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("Lote")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Origem")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar");
 
                     b.Property<decimal>("PesoBruto")
-                        .HasColumnType("numeric(7,2)");
+                        .HasColumnType("numeric(18,2)");
 
-                    b.Property<int>("Quantidade")
+                    b.Property<int>("QtdadeEntrada")
                         .HasColumnType("int");
 
                     b.Property<decimal>("RendimentoCarcaca")
-                        .HasColumnType("numeric(7,2)");
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<decimal>("Valor")
                         .HasColumnType("numeric(18,2)");
 
                     b.HasKey("BoiId");
 
-                    b.HasIndex("IdAssociado");
+                    b.HasIndex("AssociadoId");
 
-                    b.HasIndex("IdComprador");
+                    b.HasIndex("CompradorId");
 
                     b.ToTable("Parcerias", (string)null);
                 });
@@ -182,7 +197,7 @@ namespace Sgb.Data.Migrations
                 {
                     b.HasOne("Sgb.Domain.Entities.CompradorAssociado.Comprador", "Comprador")
                         .WithMany("Associados")
-                        .HasForeignKey("IdComprador")
+                        .HasForeignKey("CompradorId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -193,13 +208,13 @@ namespace Sgb.Data.Migrations
                 {
                     b.HasOne("Sgb.Domain.Entities.CompradorAssociado.Associado", "Associado")
                         .WithMany("AlteracaoSaidas")
-                        .HasForeignKey("IdAssociado")
+                        .HasForeignKey("AssociadoId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
                     b.HasOne("Sgb.Domain.Entities.CompradorAssociado.Comprador", "Comprador")
                         .WithMany("AlteracaoSaidas")
-                        .HasForeignKey("IdComprador")
+                        .HasForeignKey("CompradorId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
@@ -220,13 +235,13 @@ namespace Sgb.Data.Migrations
                 {
                     b.HasOne("Sgb.Domain.Entities.CompradorAssociado.Associado", "Associado")
                         .WithMany("InicioParcerias")
-                        .HasForeignKey("IdAssociado")
+                        .HasForeignKey("AssociadoId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Sgb.Domain.Entities.CompradorAssociado.Comprador", "Comprador")
                         .WithMany("InicioParcerias")
-                        .HasForeignKey("IdComprador")
+                        .HasForeignKey("CompradorId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 

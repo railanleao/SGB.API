@@ -11,12 +11,13 @@ namespace Sgb.Data.EntityMap.CompradorAssociado
         {
             builder.ToTable("Associados");
             builder.HasKey(a => a.CadastroId);
-            builder.Property(a => a.Nome).HasMaxLength(150).IsRequired();
-            builder.Property(a => a.CPF).HasMaxLength(14).IsRequired();
-            builder.Property(a => a.Fazenda).HasMaxLength(180).IsRequired();
+            builder.Property(a => a.Nome).HasColumnType("varchar").HasMaxLength(150).IsUnicode(false).IsRequired();
+            builder.Property(a => a.CPF).HasColumnType("varchar").IsRequired();
+            builder.Property(a => a.Fazenda).HasColumnType("varchar").HasMaxLength(180).IsUnicode(false).IsRequired();
+            builder.Property(a => a.DataDaParceria).HasColumnType("date").IsUnicode(false).IsRequired();
 
             builder.HasOne(a => a.Comprador).WithMany(c => c.Associados)
-                .HasForeignKey(a => a.IdComprador).OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(a => a.CompradorId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

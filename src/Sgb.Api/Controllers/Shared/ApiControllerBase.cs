@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Sgb.Identity.Constants;
 
 namespace Sgb.Api.Controllers.Shared
 {
@@ -7,5 +9,6 @@ namespace Sgb.Api.Controllers.Shared
     // Essa feature está em progresso e mapeada para vesão 3: https://github.com/dotnet/aspnet-api-versioning/issues/230
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
+    [Authorize(Roles = Roles.Admin)]
     public class ApiControllerBase : ControllerBase { }
 }

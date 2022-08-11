@@ -1,5 +1,7 @@
 ﻿using Sgb.Domain.Entities.Parceria;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using System.Web.Mvc;
 
 namespace Sgb.Application.DTOs.Request.Atualizacao
@@ -8,37 +10,41 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
     {
         public Guid BoiId { get; set; }
         public string Lote { get; set; }
-        public int Quantidade { get; set; }
+        public int QtdadeEntrada { get; set; }
         public decimal PesoBruto { get; set; }
         public string Origem { get; set; }
         public decimal Valor { get; set; }
         public decimal Arroba { get; set; }
         public decimal RendimentoCarcaca { get; set; }
+        [Display(Name = "Inicio da Paceria")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInicioParceria { get; set; }
-        public Guid IdComprador { get; set; }
-        public Guid IdAssociado { get; set; }
+        public Guid CompradorId { get; set; }
+        public Guid AssociadoId { get; set; }
         public Classificacao Classificacao { get; set; }
         public CompraVenda CompraVenda { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public List<SelectListItem>? Classificacoes { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public List<SelectListItem>? CompraVendas { get; set; }
 
-        public AtualizacaoInicioParceriaRequest(Guid boiId, string lote, int quantidade, decimal pesoBruto, string origem, decimal valor,
-            decimal arroba, decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid idComprador, Guid idAssociado,
+        public AtualizacaoInicioParceriaRequest(string lote, int qtdadeEntrada, decimal pesoBruto, string origem, decimal valor,
+            decimal arroba, decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid compradorId, Guid associadoId,
             Classificacao classificacao, CompraVenda compraVenda)
         {
-            BoiId = boiId;
             Lote = lote;
-            Quantidade = quantidade;
+            QtdadeEntrada = qtdadeEntrada;
             PesoBruto = pesoBruto;
             Origem = origem;
             Valor = valor;
             Arroba = arroba;
             RendimentoCarcaca = rendimentoCarcaca;
             DataInicioParceria = dataInicioParceria;
-            IdComprador = idComprador;
-            IdAssociado = idAssociado;
+            CompradorId = compradorId;
+            AssociadoId = associadoId;
             Classificacao = classificacao;
             CompraVenda = compraVenda;
         }
@@ -48,15 +54,15 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
             (
                 parceriaRequest.BoiId,
                 parceriaRequest.Lote,
-                parceriaRequest.Quantidade,
+                parceriaRequest.QtdadeEntrada,
                 parceriaRequest.PesoBruto,
                 parceriaRequest.Valor,
                 parceriaRequest.Origem,
                 parceriaRequest.Arroba,
                 parceriaRequest.RendimentoCarcaca,
                 parceriaRequest.DataInicioParceria,
-                parceriaRequest.IdComprador,
-                parceriaRequest.IdAssociado,
+                parceriaRequest.CompradorId,
+                parceriaRequest.AssociadoId,
                 parceriaRequest.Classificacao,
                 parceriaRequest.CompraVenda
                 );

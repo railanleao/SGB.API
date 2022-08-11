@@ -6,7 +6,7 @@ public static class WebApplicationBuilderExtensions
     {
         var startup = Activator.CreateInstance(typeof(TStartup), builder.Configuration) as Interfaces.IStartup;
         if (startup == null)
-            throw new ArgumentException("Startup class is invalid.");
+            throw new ArgumentException("A classe Startup é inválida.");
         
         startup.ConfigureServices(builder.Services);
         var app = builder.Build();

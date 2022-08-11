@@ -1,4 +1,5 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sgb.Application.DTOs.Request.Atualizacao
 {
@@ -6,18 +7,19 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
     {
         public Guid CadastroId { get; set; }
         public string Nome { get; set; }
-        public int CPF { get; set; }
+        [RegularExpression(@"^([0-9]{3})([0-9]{3})([9-0]{3})([0-9]{3})([0-9]{2})$",
+            ErrorMessage = "Cpf inválido!")]
+        public string CPF { get; set; }
         public string Fazenda { get; set; }
         public DateTime DataDaParceria { get; set; }
-        public Guid IdComprador { get; set; }
+        public Guid CompradorId { get; set; }
         public Comprador? Comprador { get; set; }
-        public AtualizacaoAssociadoRequest(Guid cadastroId, int cpf, DateTime dataDaParceria, string fazenda, Guid idComprador, string nome)
+        public AtualizacaoAssociadoRequest(string cpf, DateTime dataDaParceria, string fazenda, Guid compradorId, string nome)
         {
-            CadastroId = cadastroId;
             CPF = cpf;
             DataDaParceria = dataDaParceria;
             Fazenda = fazenda;
-            IdComprador = idComprador;
+            CompradorId = compradorId;
             Nome = nome;
         }
         public static Associado ConverterParaEntidade(AtualizacaoAssociadoRequest associadoRequest)
@@ -28,7 +30,7 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
                 associadoRequest.CPF,
                 associadoRequest.DataDaParceria,
                 associadoRequest.Fazenda,
-                associadoRequest.IdComprador,
+                associadoRequest.CompradorId,
                 associadoRequest.Nome
                 );
         }

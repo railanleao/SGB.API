@@ -1,15 +1,17 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sgb.Application.DTOs.Request
 {
     public class InsercaoCompradorRequest
     {
-        public Guid CadastroId { get; set; }
+        //public Guid CadastroId { get; set; }
         public string Nome { get; set; }
-        public int CPF { get; set; }
-        public InsercaoCompradorRequest(Guid cadastroId, string nome, int cpf)
+        [RegularExpression(@"(^[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2})$",
+            ErrorMessage = "Cpf inválido!")]
+        public string CPF { get; set; }
+        public InsercaoCompradorRequest(string nome, string cpf)
         {
-            CadastroId = cadastroId;
             Nome = nome;
             CPF = cpf;
         }
@@ -17,7 +19,6 @@ namespace Sgb.Application.DTOs.Request
         {
             return new Comprador
                 (
-                compradorRequest.CadastroId,
                 compradorRequest.Nome,
                 compradorRequest.CPF
                 );

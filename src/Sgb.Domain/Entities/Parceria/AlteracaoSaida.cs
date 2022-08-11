@@ -1,43 +1,49 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Sgb.Domain.Entities.Parceria
 {
     public class AlteracaoSaida : ACadastroBoi
     {
         [Display(Name = "Peso Médio Alterado")]
-        public decimal? PesoMedioAlterado { get; set; }
+        public decimal? PesoMedioAlterado { get; private set; }
+        public int QtdadeSaida { get; private set; }
         [Display(Name = "Data da Saida")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Saida { get; private set; }
-        public Guid IdComprador { get; private set; }
+        public Guid CompradorId { get; private set; }
+        [JsonIgnore]
         public Comprador? Comprador { get; private set; }
-        public Guid IdAssociado { get; private set; }
+        public Guid AssociadoId { get; private set; }
+        [JsonIgnore]
         public Associado? Associado { get; private set; }
-        public Guid InicioParceriaId { get; set; }
+        public Guid InicioParceriaId { get; private set; }
+        [JsonIgnore]
         public InicioParceria? InicioParceria { get; set; }
 
-        public AlteracaoSaida(Guid boiId, decimal? pesoMedioAlterado, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, DateTime saida,
-            Guid idComprador, Guid idAssociado, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
+        public AlteracaoSaida(Guid boiId, decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, DateTime saida,
+            Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
         {
             BoiId = boiId;
             PesoMedioAlterado = pesoMedioAlterado;
+            QtdadeSaida = qtdadeSaida;
             PesoBruto = pesoBruto;
             Arroba = arroba;
             RendimentoCarcaca = rendimentoCarcaca;
             Saida = saida;
-            IdComprador = idComprador;
-            IdAssociado = idAssociado;
+            CompradorId = compradorId;
+            AssociadoId = associadoId;
             InicioParceriaId = inicioParceriaId;
             Classificacao = classificacao;
             CompraVenda = compraVenda;
         }
 
-        public AlteracaoSaida(decimal? pesoMedioAlterado, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, 
-            DateTime saida, Guid idComprador, Guid idAssociado, Guid inicioParceriaId, Classificacao classificacao, 
-            CompraVenda compraVenda) : this(default, pesoMedioAlterado, pesoBruto, arroba, rendimentoCarcaca, saida, 
-                idComprador, idAssociado, inicioParceriaId, classificacao, compraVenda) { }
+        public AlteracaoSaida(decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, 
+            DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, 
+            CompraVenda compraVenda) : this(default, pesoMedioAlterado, qtdadeSaida, pesoBruto, arroba, rendimentoCarcaca, saida, 
+                compradorId, associadoId, inicioParceriaId, classificacao, compraVenda) { }
         public AlteracaoSaida() { }
     }
 }

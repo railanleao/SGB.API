@@ -7,7 +7,9 @@ using Sgb.Application.Service;
 using System.Security.Claims;
 
 namespace Sgb.Api.Controllers.v1;
+
 [ApiVersion("1.0")]
+[AllowAnonymous]
 public class UsuarioController : ApiControllerBase
 {
     IIdentityService _identityService;
@@ -34,6 +36,7 @@ public class UsuarioController : ApiControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest();
+
         var resultado = await _identityService.Login(usuarioLogin);
         if (resultado.Sucesso)
             return Ok(resultado);

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sgb.Data.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace Sgb.Data.Migrations
                 columns: table => new
                 {
                     CadastroId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nome = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    CPF = table.Column<int>(type: "int", nullable: false)
+                    Nome = table.Column<string>(type: "varchar", unicode: false, maxLength: 150, nullable: false),
+                    CPF = table.Column<string>(type: "varchar", unicode: false, maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,11 +27,11 @@ namespace Sgb.Data.Migrations
                 columns: table => new
                 {
                     CadastroId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Fazenda = table.Column<string>(type: "character varying(180)", maxLength: 180, nullable: false),
-                    DataDaParceria = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Fazenda = table.Column<string>(type: "varchar", unicode: false, maxLength: 180, nullable: false),
+                    DataDaParceria = table.Column<DateTime>(type: "date", unicode: false, nullable: false),
                     IdComprador = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nome = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    CPF = table.Column<int>(type: "integer", maxLength: 14, nullable: false)
+                    Nome = table.Column<string>(type: "varchar", unicode: false, maxLength: 150, nullable: false),
+                    CPF = table.Column<string>(type: "varchar", unicode: false, maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,14 +52,14 @@ namespace Sgb.Data.Migrations
                     IdAssociado = table.Column<Guid>(type: "uuid", nullable: false),
                     DataInicioParceria = table.Column<DateTime>(type: "date", nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
-                    Origem = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Origem = table.Column<string>(type: "varchar", unicode: false, maxLength: 50, nullable: false),
                     Valor = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    Lote = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Lote = table.Column<string>(type: "varchar", unicode: false, maxLength: 10, nullable: false),
                     Classificacao = table.Column<string>(type: "text", nullable: false),
                     CompraVenda = table.Column<string>(type: "text", nullable: false),
-                    PesoBruto = table.Column<decimal>(type: "numeric(7,2)", nullable: false),
-                    RendimentoCarcaca = table.Column<decimal>(type: "numeric(7,2)", nullable: false),
-                    Arroba = table.Column<decimal>(type: "numeric(7,2)", nullable: false)
+                    PesoBruto = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    RendimentoCarcaca = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    Arroba = table.Column<decimal>(type: "numeric(18,2)", unicode: false, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,9 +88,9 @@ namespace Sgb.Data.Migrations
                     InicioParceriaId = table.Column<Guid>(type: "uuid", nullable: false),
                     Classificacao = table.Column<string>(type: "text", nullable: true),
                     CompraVenda = table.Column<string>(type: "text", nullable: true),
-                    PesoBruto = table.Column<decimal>(type: "numeric(7,2)", nullable: false),
-                    RendimentoCarcaca = table.Column<decimal>(type: "numeric(7,2)", nullable: false),
-                    Arroba = table.Column<decimal>(type: "numeric(7,2)", nullable: false)
+                    PesoBruto = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    RendimentoCarcaca = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    Arroba = table.Column<decimal>(type: "numeric(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {

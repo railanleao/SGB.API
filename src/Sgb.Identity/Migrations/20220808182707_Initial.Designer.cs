@@ -12,8 +12,8 @@ using Sgb.Identity.Data;
 namespace Sgb.Identity.Migrations
 {
     [DbContext(typeof(IdentityDataContext))]
-    [Migration("20220729120420_Inicial")]
-    partial class Inicial
+    [Migration("20220808182707_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

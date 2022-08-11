@@ -15,9 +15,7 @@ namespace Sgb.Domain.Services.Shared
 
         public virtual async Task AtualizarAsync(TEntity objeto) => 
             await _repositoryBase.AtualizarAsync(objeto);
-
-        public void Dispose() =>
-            _repositoryBase.Dispose();
+        
         public virtual async Task<TEntity?> ObterPorIdAsync(Guid id) =>
            await _repositoryBase.ObterPorIdAsync(id);
         
@@ -28,5 +26,7 @@ namespace Sgb.Domain.Services.Shared
             await _repositoryBase.RemoverAsync(objeto);
         public virtual async Task RemoverPorIdAsync(Guid id) =>
             await _repositoryBase.RemoverPorIdAsync(id);
+        public void Dispose() =>
+            _repositoryBase.Dispose();
     }
 }

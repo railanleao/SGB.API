@@ -1,5 +1,6 @@
 ﻿using Sgb.Domain.Entities.Parceria;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Sgb.Domain.Entities.CompradorAssociado
 {
@@ -7,18 +8,18 @@ namespace Sgb.Domain.Entities.CompradorAssociado
     {
         public Associado() { }
 
-        public Associado(int cpf, DateTime dataDaParceria, string? fazenda, Guid idComprador, string? nome) :
-        this(default, cpf, dataDaParceria, fazenda, idComprador, nome)
+        public Associado(string cpf, DateTime dataDaParceria, string? fazenda, Guid compradorId, string? nome) :
+        this(default, cpf, dataDaParceria, fazenda, compradorId, nome)
         {
         }
 
-        public Associado(Guid cadastroId, int cpf, DateTime dataDaParceria, string? fazenda, Guid idComprador, string? nome)
+        public Associado(Guid cadastroId, string cpf, DateTime dataDaParceria, string? fazenda, Guid compradorId, string? nome)
         {
             CadastroId = cadastroId;
             CPF = cpf;
             DataDaParceria = dataDaParceria;
             Fazenda = fazenda;
-            IdComprador = idComprador;
+            CompradorId = compradorId;
             Nome = nome;
 
         }
@@ -28,9 +29,12 @@ namespace Sgb.Domain.Entities.CompradorAssociado
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataDaParceria { get; private set; }
-        public Guid IdComprador { get; private set; }
+        public Guid CompradorId { get; private set; }
+        [JsonIgnore]
         public Comprador? Comprador { get; set; }
+        [JsonIgnore]
         public virtual ICollection<InicioParceria>? InicioParcerias { get; private set; }
+        [JsonIgnore]
         public virtual ICollection<AlteracaoSaida>? AlteracaoSaidas { get; private set; }
     }
 }

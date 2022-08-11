@@ -10,7 +10,7 @@ using Sgb.Identity.Constants;
 
 namespace Sgb.Api.Controllers.v1;
 
-[Authorize(Roles = Roles.Admin)]
+
 [ApiVersion("1.0")]
 public class CompradorController : ApiControllerBase
 {
@@ -18,7 +18,7 @@ public class CompradorController : ApiControllerBase
     public CompradorController(IServiceComprador compradorService) =>
             _compradorService = compradorService;
 
-    [ClaimsAuthorize(ClaimTypes.Comprador, "Ler")]
+    //[ClaimsAuthorize(ClaimTypes.Comprador, "Ler")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CompradorResponse>>> ObterTodos()
     {
@@ -26,7 +26,7 @@ public class CompradorController : ApiControllerBase
         var compradoresResponse = compradores.Select(comprador => CompradorResponse.ConverteParaResponse(comprador));
         return Ok(compradoresResponse);
     }
-    [ClaimsAuthorize(ClaimTypes.Comprador, "Ler")]
+    //[ClaimsAuthorize(ClaimTypes.Comprador, "Ler")]
     [HttpGet("{id}")]
     public async Task<ActionResult<CompradorResponse>> ObterPorId(Guid id)
     {
@@ -38,24 +38,17 @@ public class CompradorController : ApiControllerBase
         var compradorResponse = CompradorResponse.ConverteParaResponse(comprador);
         return Ok(compradorResponse);
     }
-    //public async Task<IActionResult> Inserir()
-    //{
-    //    return View();
-    //}
-    [ClaimsAuthorizeAttribute(ClaimTypes.Comprador, "Inserir")]
+    //[ClaimsAuthorizeAttribute(ClaimTypes.Comprador, "Inserir")]
     [HttpPost]
     public async Task<ActionResult<Guid>> Inserir(InsercaoCompradorRequest compradorRequest)
     {
+        if (compradorRequest == null)
+            return BadRequest("Dados Inválidos");
         var comprador = InsercaoCompradorRequest.ConverterParaEntidade(compradorRequest);
-        var id = (Guid)await _compradorService.AdicionarAsync(comprador);
-        return CreatedAtAction(nameof(ObterPorId), new { id = id }, id);
+         await _compradorService.AdicionarAsync(comprador);
+        
+        return Ok(comprador);
     }
-    //public async Task<IActionResult> Atualizar(Guid id)
-    //{
-    //    var comprador = await _compradorService.ObterPorIdAsync(id);
-    //    return Ok(comprador);
-    //}
-    [ClaimsAuthorizeAttribute(ClaimTypes.Comprador, "Atualizar")]
     [HttpPut]
     public async Task<ActionResult> Atualizar(AtualizacaoCompradorRequest atualizarComprador)
     {
@@ -64,7 +57,7 @@ public class CompradorController : ApiControllerBase
         return Ok();
     }
     [Authorize(Policy = Policies.HorarioComercial)]
-    [ClaimsAuthorizeAttribute(ClaimTypes.Comprador, "Excluir")]
+    //[ClaimsAuthorizeAttribute(ClaimTypes.Comprador, "Excluir")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> Excluir(Guid id)
     {

@@ -2,32 +2,33 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Sgb.Api.Attributes;
-
-public class ClaimsAuthorizeAttribute : TypeFilterAttribute
+namespace Sgb.Api.Attributes
 {
-    public ClaimsAuthorizeAttribute(string claimType, string claimValue) : base(typeof(ClaimRequirementFilter)) =>
-        Arguments = new object[] { new Claim(claimType, claimValue) };
-}
-
-public class ClaimRequirementFilter : IAuthorizationFilter
-{
-    readonly Claim _claim;
-
-    public ClaimRequirementFilter(Claim claim) =>
-        _claim = claim;
-
-    public void OnAuthorization(AuthorizationFilterContext context)
+    public class ClaimsAuthorizeAttribute : TypeFilterAttribute
     {
-        var user = context.HttpContext.User as ClaimsPrincipal;
+        public ClaimsAuthorizeAttribute(string claimType, string claimValue) : base(typeof(ClaimRequirementFilter)) =>
+            Arguments = new object[] { new Claim(claimType, claimValue) };
+    }
 
-        if (user == null || !user.Identity.IsAuthenticated)
+    public class ClaimRequirementFilter : IAuthorizationFilter
+    {
+        readonly Claim _claim;
+
+        public ClaimRequirementFilter(Claim claim) =>
+            _claim = claim;
+
+        public void OnAuthorization(AuthorizationFilterContext context)
         {
-            context.Result = new UnauthorizedResult();
-            return;
-        }
+            var user = context.HttpContext.User as ClaimsPrincipal;
 
-        if (!user.HasClaim(_claim.Type, _claim.Value))
-            context.Result = new ForbidResult();
+            if (user == null || !user.Identity.IsAuthenticated)
+            {
+                context.Result = new UnauthorizedResult();
+                return;
+            }
+
+            if (!user.HasClaim(_claim.Type, _claim.Value))
+                context.Result = new ForbidResult();
+        }
     }
 }

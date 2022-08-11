@@ -1,4 +1,5 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sgb.Application.DTOs.Request.Atualizacao
 {
@@ -6,10 +7,11 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
     {
         public Guid CadastroId { get; set; }
         public string Nome { get; set; }
-        public int CPF { get; set; }
-        public AtualizacaoCompradorRequest(Guid cadastroId, string nome, int cpf)
+        [RegularExpression(@"^([0-9]{3})([0-9]{3})([9-0]{3})([0-9]{3})([0-9]{2})$",
+            ErrorMessage = "Cpf inválido!")]
+        public string CPF { get; set; }
+        public AtualizacaoCompradorRequest(string nome, string cpf)
         {
-            CadastroId = cadastroId;
             Nome = nome;
             CPF = cpf;
         }

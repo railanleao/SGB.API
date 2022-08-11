@@ -1,5 +1,7 @@
 ﻿using Sgb.Domain.Entities.Parceria;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using System.Web.Mvc;
 
 namespace Sgb.Application.DTOs.Request.Atualizacao
@@ -8,30 +10,36 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
     {
         public Guid BoiId { get; set; }
         public decimal? PesoMedioAlterado { get; set; }
+        public int QtdadeSaida { get; set; }
         public decimal PesoBruto { get; set; }
         public decimal Arroba { get; set; }
         public decimal RendimentoCarcaca { get; set; }
+        [Display(Name = "Data da Saida")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Saida { get; set; }
-        public Guid IdComprador { get; set; }
-        public Guid IdAssociado { get; set; }
+        public Guid CompradorId { get; set; }
+        public Guid AssociadoId { get; set; }
         public Guid InicioParceriaId { get; set; }
         public Classificacao Classificacao { get; set; }
         public CompraVenda CompraVenda { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public List<SelectListItem>? Classificacoes { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public List<SelectListItem>? CompraVendas { get; set; }
-        public AtualizacaoAlteracaoSaidaRequest(Guid boiId, decimal? pesoMedioAlterado, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca,
-            DateTime saida, Guid idComprador, Guid idAssociado, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
+        public AtualizacaoAlteracaoSaidaRequest(decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca,
+            DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
         {
-            BoiId = boiId;
             PesoMedioAlterado = pesoMedioAlterado;
+            QtdadeSaida = qtdadeSaida;
             PesoBruto = pesoBruto;
             Arroba = arroba;
             RendimentoCarcaca = rendimentoCarcaca;
             Saida = saida;
-            IdComprador = idComprador;
-            IdAssociado = idAssociado;
+            CompradorId = compradorId;
+            AssociadoId = associadoId;
             InicioParceriaId = inicioParceriaId;
             Classificacao = classificacao;
             CompraVenda = compraVenda;
@@ -42,12 +50,13 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
                 (
                 alteracaoSaidaRequest.BoiId,
                 alteracaoSaidaRequest.PesoMedioAlterado,
+                alteracaoSaidaRequest.QtdadeSaida,
                 alteracaoSaidaRequest.PesoBruto,
                 alteracaoSaidaRequest.Arroba,
                 alteracaoSaidaRequest.RendimentoCarcaca,
                 alteracaoSaidaRequest.Saida,
-                alteracaoSaidaRequest.IdComprador,
-                alteracaoSaidaRequest.IdAssociado,
+                alteracaoSaidaRequest.CompradorId,
+                alteracaoSaidaRequest.AssociadoId,
                 alteracaoSaidaRequest.InicioParceriaId,
                 alteracaoSaidaRequest.Classificacao,
                 alteracaoSaidaRequest.CompraVenda

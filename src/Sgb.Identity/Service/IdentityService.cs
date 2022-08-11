@@ -4,6 +4,7 @@ using Sgb.Application.DTOs.Request;
 using Sgb.Application.DTOs.Response;
 using Sgb.Application.Service;
 using Sgb.Identity.Configuration;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -12,7 +13,9 @@ namespace Sgb.Identity.Service
     public class IdentityService : IIdentityService
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+
         private readonly UserManager<IdentityUser> _userManager;
+
         private readonly JwtOptions _jwtOptions;
 
         public IdentityService(SignInManager<IdentityUser> signInManager,
@@ -118,12 +121,12 @@ namespace Sgb.Identity.Service
         private async Task<IList<Claim>> ObterClaims(IdentityUser user, bool adicionarClaimsUsuario)
         {
             var claims = new List<Claim>();
-
+            CultureInfo idioma = new CultureInfo("pt-BR");
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTime.Now.ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", idioma)));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", idioma)));
 
             if (adicionarClaimsUsuario)
             {
