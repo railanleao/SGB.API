@@ -22,7 +22,9 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
         public Guid CompradorId { get; set; }
         public Guid AssociadoId { get; set; }
         public Guid InicioParceriaId { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Classificacao Classificacao { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ModeloDeNegocio CompraVenda { get; set; }
         public AtualizacaoAlteracaoSaidaRequest(decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca,
             DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, ModeloDeNegocio compraVenda)

@@ -1,6 +1,7 @@
 ﻿using Sgb.Domain.Entities.Constants;
 using Sgb.Domain.Entities.Parceria;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Sgb.Application.DTOs.Request
 {
@@ -19,7 +20,9 @@ namespace Sgb.Application.DTOs.Request
         public DateTime DataInicioParceria { get; set; }
         public Guid CompradorId { get; set; }
         public Guid AssociadoId { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Classificacao Classificacao { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ModeloDeNegocio CompraVenda { get; set; }
         public InsercaoInicioParceriaRequest(string lote, int qtdadeEntrada, decimal pesoBruto, string origem, decimal valor,
             decimal arroba, decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid compradorId, Guid associadoId,
