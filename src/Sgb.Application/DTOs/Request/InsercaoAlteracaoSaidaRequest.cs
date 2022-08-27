@@ -1,8 +1,6 @@
-﻿using Sgb.Domain.Entities.Parceria;
+﻿using Sgb.Domain.Entities.Constants;
+using Sgb.Domain.Entities.Parceria;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-using System.Web.Mvc;
 
 namespace Sgb.Application.DTOs.Request
 {
@@ -22,15 +20,9 @@ namespace Sgb.Application.DTOs.Request
         public Guid AssociadoId { get; set; }
         public Guid InicioParceriaId { get; set; }
         public Classificacao Classificacao { get; set; }
-        public CompraVenda CompraVenda { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public List<SelectListItem>? Classificacoes { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public List<SelectListItem>? CompraVendas { get; set; }
+        public ModeloDeNegocio CompraVenda { get; set; }
         public InsercaoAlteracaoSaidaRequest(decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca,
-            DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
+            DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, ModeloDeNegocio compraVenda)
         {            
             PesoMedioAlterado = pesoMedioAlterado;
             QtdadeSaida = qtdadeSaida;

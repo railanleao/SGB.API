@@ -41,9 +41,12 @@ public class InicioParceriasController : ApiControllerBase
     [HttpPost]
     public async Task<ActionResult<Guid>> Inserir(InsercaoInicioParceriaRequest insercaoparceria)
     {
+        if (insercaoparceria == null)
+            return BadRequest("Dados Inválidos");
+
         var parceria = InsercaoInicioParceriaRequest.ConverterParaEntidade(insercaoparceria);            
-        var id = (Guid)await _parceriaService.AdicionarAsync(parceria);
-        return CreatedAtAction(nameof(ObterPorId), new { id = id }, id);
+        await _parceriaService.AdicionarAsync(parceria);
+        return Ok(parceria);
     }
     //[ClaimsAuthorizeAttribute(ClaimTypes.InicioParceria, "Atualizar")]
     [HttpPut]

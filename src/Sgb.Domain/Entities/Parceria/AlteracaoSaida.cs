@@ -1,4 +1,5 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
+using Sgb.Domain.Entities.Constants;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -24,7 +25,7 @@ namespace Sgb.Domain.Entities.Parceria
         public InicioParceria? InicioParceria { get; set; }
 
         public AlteracaoSaida(Guid boiId, decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, DateTime saida,
-            Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, CompraVenda compraVenda)
+            Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, ModeloDeNegocio compraVenda)
         {
             BoiId = boiId;
             PesoMedioAlterado = pesoMedioAlterado;
@@ -42,7 +43,7 @@ namespace Sgb.Domain.Entities.Parceria
 
         public AlteracaoSaida(decimal? pesoMedioAlterado, int qtdadeSaida, decimal pesoBruto, decimal arroba, decimal rendimentoCarcaca, 
             DateTime saida, Guid compradorId, Guid associadoId, Guid inicioParceriaId, Classificacao classificacao, 
-            CompraVenda compraVenda) : this(default, pesoMedioAlterado, qtdadeSaida, pesoBruto, arroba, rendimentoCarcaca, saida, 
+            ModeloDeNegocio compraVenda) : this(default, pesoMedioAlterado, qtdadeSaida, pesoBruto, arroba, rendimentoCarcaca, saida, 
                 compradorId, associadoId, inicioParceriaId, classificacao, compraVenda) { }
         public AlteracaoSaida() { }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Sgb.Domain.Entities.Constants;
 using Sgb.Domain.Entities.Parceria;
 
 namespace Sgb.Data.EntityMap.Parceria
@@ -25,15 +26,13 @@ namespace Sgb.Data.EntityMap.Parceria
             (Classificacao)Enum.Parse(typeof(Classificacao), i)).IsRequired();
 
             builder.Property(i => i.CompraVenda).HasConversion(i => i.ToString(), i =>
-            (CompraVenda)Enum.Parse(typeof(CompraVenda), i)).IsRequired();
+            (ModeloDeNegocio)Enum.Parse(typeof(ModeloDeNegocio), i)).IsRequired();
 
             builder.HasOne(i => i.Comprador).WithMany(i => i.InicioParcerias)
                 .HasForeignKey(i => i.CompradorId).OnDelete(DeleteBehavior.NoAction);
             builder.HasOne(i => i.Associado).WithMany(i => i.InicioParcerias)
                 .HasForeignKey(i => i.AssociadoId).OnDelete(DeleteBehavior.NoAction);
             builder.HasMany(i => i.AlteracaoSaidas).WithOne(i => i.InicioParceria).OnDelete(DeleteBehavior.NoAction);
-
-            builder.Navigation(c => c.AlteracaoSaidas).AutoInclude();
         }
     }
 }

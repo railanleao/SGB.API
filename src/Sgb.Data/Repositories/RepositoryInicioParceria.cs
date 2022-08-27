@@ -24,9 +24,9 @@ namespace Sgb.Data.Repositories
             return await _context.InicioParcerias
                 .Include(i => i.Comprador)
                 .Include(i => i.Associado)
-                .Where(i => i.BoiId == id)
+                //.Where(i => i.BoiId == id)
                 .AsSingleQuery()
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(a => a.Equals(id));
         }
     }
 }

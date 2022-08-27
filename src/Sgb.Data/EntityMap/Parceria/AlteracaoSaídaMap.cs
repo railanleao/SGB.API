@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Sgb.Domain.Entities.Constants;
 using Sgb.Domain.Entities.Parceria;
 
 namespace Sgb.Data.EntityMap.Parceria
@@ -22,7 +23,7 @@ namespace Sgb.Data.EntityMap.Parceria
             (Classificacao)Enum.Parse(typeof(Classificacao), a));
             
             builder.Property(a => a.CompraVenda).HasConversion(a => a.ToString(), a =>
-            (CompraVenda)Enum.Parse(typeof(CompraVenda), a));
+            (ModeloDeNegocio)Enum.Parse(typeof(ModeloDeNegocio), a));
 
             builder.HasOne(a => a.Comprador).WithMany(a => a.AlteracaoSaidas)
                 .HasForeignKey(a => a.CompradorId).OnDelete(DeleteBehavior.SetNull);

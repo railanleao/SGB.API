@@ -52,6 +52,7 @@ public static class SwaggerSetup
                     new List<string>()
                 }
             });
+            
         });
     }
 
@@ -71,7 +72,7 @@ public static class SwaggerSetup
                 description.GroupName);
             }
             options.RoutePrefix = string.Empty;
-
+            
             options.DocExpansion(DocExpansion.List);
         });
     }

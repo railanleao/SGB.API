@@ -13,6 +13,7 @@ namespace Sgb.Application.DTOs.Response
         public decimal PesoBruto { get; set; }
         public decimal Arroba { get; set; }
         public decimal RendimentoCarcaca { get; set; }
+
         [Display(Name = "Data da Saida")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

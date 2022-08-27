@@ -1,4 +1,5 @@
 ﻿using Sgb.Domain.Entities.CompradorAssociado;
+using Sgb.Domain.Entities.Constants;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -17,8 +18,10 @@ namespace Sgb.Domain.Entities.Parceria
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInicioParceria { get; private set; }
+
         public int QtdadeEntrada { get; private set; }
         [Display(Name = "Origem")]
+
         public string Origem { get; private set; }
         [Display(Name = "Valor")]
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
@@ -29,7 +32,7 @@ namespace Sgb.Domain.Entities.Parceria
 
         public InicioParceria(Guid boiId, string lote, int qtdadeEntrada, decimal pesoBruto, decimal valor, string origem, 
             decimal arroba, decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid compradorId, Guid associadoId, 
-            Classificacao classificacao, CompraVenda compraVenda)
+            Classificacao classificacao, ModeloDeNegocio compraVenda)
         {
             BoiId = boiId;
             Lote = lote;
@@ -49,7 +52,7 @@ namespace Sgb.Domain.Entities.Parceria
 
         public InicioParceria(string lote, int qtdadeEntrada, decimal pesoBruto, decimal valor, string origem, decimal arroba, 
             decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid compradorId, Guid associadoId, 
-            Classificacao classificacao, CompraVenda compraVenda) : this(default, lote, qtdadeEntrada, pesoBruto, valor, 
+            Classificacao classificacao, ModeloDeNegocio compraVenda) : this(default, lote, qtdadeEntrada, pesoBruto, valor, 
                 origem, arroba, rendimentoCarcaca, dataInicioParceria, compradorId, associadoId, classificacao, 
                 compraVenda)
         {

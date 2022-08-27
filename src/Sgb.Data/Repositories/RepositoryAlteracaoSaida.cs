@@ -25,10 +25,10 @@ namespace Sgb.Data.Repositories
             return await _context.AlteracaoSaidas
                 .Include(ats => ats.Comprador)
                 .Include(ats => ats.Associado)
-                .Include(ats => ats.InicioParceria)
-                .Where(ats => ats.InicioParceriaId == id)
+                .Include(ats => ats.InicioParceria)                
                 .AsSingleQuery()
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(a => a.Equals(id));
+            //.Where(ats => ats.InicioParceriaId == id)
         }
     }
 }

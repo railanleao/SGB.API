@@ -1,5 +1,6 @@
 ﻿using Sgb.Api.Extensions;
 using Sgb.Api.IoC;
+using System.Text.Json.Serialization;
 
 namespace Sgb.Api;
 
@@ -13,7 +14,8 @@ public class Startup : Interfaces.IStartup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCors();
-        services.AddControllers();//.AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new IntToStringConverter()))
+        //usei para serializar Json de enums para string/text
+        services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
         services.AddRouting(options => options.LowercaseUrls = true);
         services.AddVersioning();
         services.AddSwagger();

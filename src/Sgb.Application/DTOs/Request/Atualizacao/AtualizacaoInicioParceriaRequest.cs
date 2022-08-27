@@ -1,4 +1,5 @@
-﻿using Sgb.Domain.Entities.Parceria;
+﻿using Sgb.Domain.Entities.Constants;
+using Sgb.Domain.Entities.Parceria;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -22,18 +23,13 @@ namespace Sgb.Application.DTOs.Request.Atualizacao
         public DateTime DataInicioParceria { get; set; }
         public Guid CompradorId { get; set; }
         public Guid AssociadoId { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Classificacao Classificacao { get; set; }
-        public CompraVenda CompraVenda { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public List<SelectListItem>? Classificacoes { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public List<SelectListItem>? CompraVendas { get; set; }
-
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public ModeloDeNegocio CompraVenda { get; set; }
         public AtualizacaoInicioParceriaRequest(string lote, int qtdadeEntrada, decimal pesoBruto, string origem, decimal valor,
             decimal arroba, decimal rendimentoCarcaca, DateTime dataInicioParceria, Guid compradorId, Guid associadoId,
-            Classificacao classificacao, CompraVenda compraVenda)
+            Classificacao classificacao, ModeloDeNegocio compraVenda)
         {
             Lote = lote;
             QtdadeEntrada = qtdadeEntrada;

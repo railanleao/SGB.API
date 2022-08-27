@@ -22,10 +22,9 @@ namespace Sgb.Data.Repositories
         {
             return await _context.Associados
                 .Include(a => a.Comprador)
-                .Where(a => a.CadastroId == id)
                 .AsSingleQuery()
-                .FirstOrDefaultAsync();
-            //     .FirstOrDefaultAsync(a => a.Equals(id));
+                .FirstOrDefaultAsync(a => a.Equals(id));
+            //.Where(a => a.CadastroId == id)
         }
     }
 }
