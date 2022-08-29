@@ -1,25 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Api", "..\src\Sgb.Api\Sgb.Api.csproj", "{775F0CEA-C5E6-463C-9B08-1BD693D7A568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sgb.Api", "..\src\Sgb.Api\Sgb.Api.csproj", "{775F0CEA-C5E6-463C-9B08-1BD693D7A568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Application", "..\src\Sgb.Application\Sgb.Application.csproj", "{7984D96B-1CE1-49E7-A6D0-56B77238CE70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sgb.Application", "..\src\Sgb.Application\Sgb.Application.csproj", "{7984D96B-1CE1-49E7-A6D0-56B77238CE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Data", "..\src\Sgb.Data\Sgb.Data.csproj", "{79324DE9-4636-4F74-9224-CECC44149FC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sgb.Data", "..\src\Sgb.Data\Sgb.Data.csproj", "{79324DE9-4636-4F74-9224-CECC44149FC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Domain", "..\src\Sgb.Domain\Sgb.Domain.csproj", "{20491D69-61B2-48EC-A71A-F6F75EF78480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sgb.Domain", "..\src\Sgb.Domain\Sgb.Domain.csproj", "{20491D69-61B2-48EC-A71A-F6F75EF78480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Identity", "..\src\Sgb.Identity\Sgb.Identity.csproj", "{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sgb.Identity", "..\src\Sgb.Identity\Sgb.Identity.csproj", "{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teste", "teste", "{D3DAE941-8FCB-4EB6-9B82-552F135D8AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Data.Tests", "Sgb.Data.Tests\Sgb.Data.Tests.csproj", "{56814200-D8B5-401D-9036-8E238E550127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sgb.Domain.Tests", "Sgb.Domain.Tests\Sgb.Domain.Tests.csproj", "{5D4927D9-5122-4203-9018-F64133FF47C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11996703-FC8E-4F2D-AC84-D548D637B312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{775F0CEA-C5E6-463C-9B08-1BD693D7A568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -42,5 +47,28 @@ Global
 		{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56814200-D8B5-401D-9036-8E238E550127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56814200-D8B5-401D-9036-8E238E550127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56814200-D8B5-401D-9036-8E238E550127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56814200-D8B5-401D-9036-8E238E550127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D4927D9-5122-4203-9018-F64133FF47C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D4927D9-5122-4203-9018-F64133FF47C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D4927D9-5122-4203-9018-F64133FF47C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D4927D9-5122-4203-9018-F64133FF47C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{775F0CEA-C5E6-463C-9B08-1BD693D7A568} = {11996703-FC8E-4F2D-AC84-D548D637B312}
+		{7984D96B-1CE1-49E7-A6D0-56B77238CE70} = {11996703-FC8E-4F2D-AC84-D548D637B312}
+		{79324DE9-4636-4F74-9224-CECC44149FC1} = {11996703-FC8E-4F2D-AC84-D548D637B312}
+		{20491D69-61B2-48EC-A71A-F6F75EF78480} = {11996703-FC8E-4F2D-AC84-D548D637B312}
+		{9CB44D59-B14E-4EDC-B534-E07B3C7CBE8F} = {11996703-FC8E-4F2D-AC84-D548D637B312}
+		{56814200-D8B5-401D-9036-8E238E550127} = {D3DAE941-8FCB-4EB6-9B82-552F135D8AFA}
+		{5D4927D9-5122-4203-9018-F64133FF47C0} = {D3DAE941-8FCB-4EB6-9B82-552F135D8AFA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9044D825-E7FF-4F18-98DA-A6A00EF2CFD7}
 	EndGlobalSection
 EndGlobal
